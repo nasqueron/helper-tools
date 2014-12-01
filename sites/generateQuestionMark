@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<div id="helpUnderlay" class="help-underlay">
+  <div id="helpModal" class="help-modal">
+  <h1>Keyboard Shortcuts <kbd class="help-key"><span>?</span></kbd></h1>
+    <div id="helpClose" class="help-close">&times;</div>
+    <div id="helpModalContent" class="help-modal-content">
+      <div id="helpListWrap" class="help-list-wrap">
+        <!-- Go to column -->
+        <ul class="help-list">
+<?php
+$sites = json_decode(file_get_contents('http://api.nasqueron.org/sites.json'));
+foreach ($sites as $site) {
+    $title = str_replace('Nasqueron ', '', $site->title);
+    $title = str_replace(' Nasqueron', '', $title);
+    echo '          <li class="help-key-unit">', "\n";
+    echo '            <kbd class="help-key"><span>g</span>, <span>', $site->shorcutKey, '</span></kbd>', "\n";
+    echo '            <span class="help-key-def">Go to ', $title, '</span>', "\n";
+    echo '          </li>', "\n";
+}
+?>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+define('DOMAIN', 'nasqueron.org');
+define('SITES_MAP', 'http://api.nasqueron.org/sites.json');
+
+$sites = json_decode(file_get_contents(SITES_MAP));
+
+foreach ($sites as $site) {
+    $url = 'http://' . $site->id . '.' . DOMAIN;
+    echo 
+}
+?>
